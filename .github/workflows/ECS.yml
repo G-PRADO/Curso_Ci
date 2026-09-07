@@ -13,7 +13,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.ID_CHAVE_ACESSA }}
           aws-secret-access-key: ${{ secrets.CHAVE_SECRETA}}
-          aws-region: us-east-2
+          aws-region: us-east-1
       
       - name: obtendo arquivo da tarefa
         run: aws ecs describe-task-definition --task-definition Tarefa_API-GO --query taskDefinition > task-definition.json
