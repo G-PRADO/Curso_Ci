@@ -18,18 +18,12 @@ jobs:
       - name: obtendo arquivo da tarefa
         run: aws ecs describe-task-definition --task-definition Tarefa_API-GO --query taskDefinition > task-definition.json
 
-      - name: Verificar container
-        run: |
-          cat task-definition.json
-          echo "---- Nomes dos containers ----"
-          jq -r '.containerDefinitions[].name' task-definition.json  
-
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: task-definition.json
-          container-name: api-go
+          container-name: Go
           image: gprado10/go_ci:Projeto_base
           environment-variables: |
             HOST=${{ secrets.DBHOST }}
