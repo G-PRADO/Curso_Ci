@@ -23,7 +23,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: task-definition.json
-          container-name: go
+          container-name: api-go
           image: gprado10/go_ci:Projeto_base
           environment-variables: |
             HOST=${{ secrets.DBHOST }}
